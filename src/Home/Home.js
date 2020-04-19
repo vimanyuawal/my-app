@@ -30,34 +30,50 @@ class Home extends React.Component {
         if(!this.state.showIndia)
         {
             return (
-                <div>
-                    <USChart />
-                    <div className="btn-group mr-2">
-                        <button type="button" class="btn btn-outline-primary btn-group">
-                        United States
-                        </button>
-                    </div>
-                    <div className="btn-group">
-                        <button type="button" class="btn btn-outline-primary btn-group" onClick={this.handleClickIndia}>
-                        India
-                        </button>
-                    </div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col">
+                        <USChart />
+                        </div>
+                      </div>
+                    <div className="row">
+                      <div className="col">
+                          <div className="btn-group mr-2">
+                              <button type="button" class="btn btn-outline-primary btn-group">
+                              United States
+                              </button>
+                            </div>
+                          <div className="btn-group">
+                              <button type="button" class="btn btn-outline-primary btn-group" onClick={this.handleClickIndia}>
+                              India
+                              </button>
+                            </div>
+                        </div>
+                      </div>
                 </div>
             );
         }
 
         return (
-                <div>
-                    <IndiaChart />
-                        <div className="btn-group mr-2">
-                            <button type="button" class="btn btn-outline-primary btn-group" onClick={this.handleClickUS}>
-                            United States
-                            </button>
+                <div className="container-fluid">
+                    <div className="row">
+                    <div className="col">
+                        <IndiaChart />
                         </div>
-                        <div className="btn-group">
-                            <button type="button" class="btn btn-outline-primary btn-group">
-                            India
-                            </button>
+                      </div>
+                    <div className="row">
+                      <div className="col">
+                            <div className="btn-group mr-2">
+                                <button type="button" class="btn btn-outline-primary btn-group" onClick={this.handleClickUS}>
+                                United States
+                                </button>
+                            </div>
+                            <div className="btn-group">
+                                <button type="button" class="btn btn-outline-primary btn-group">
+                                India
+                                </button>
+                            </div>
+                            </div>
                         </div>
                 </div>
         )

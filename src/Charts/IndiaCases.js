@@ -85,9 +85,8 @@ class IndiaCases extends Component {
       console.log(data);   
 
       return (
-              <div>
+              <div className="align-self-center">
                 <h4>India Cases</h4>
-                <div className = "chart">
                     <LineChart width={1000} height={300} data={data}>
                     <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
                       <XAxis dataKey="dates"/>
@@ -97,7 +96,6 @@ class IndiaCases extends Component {
                       <Line type="monotone" dataKey="new_daily_cases" stroke="#8884d8" />
                       <Line type="monotone" dataKey="new_daily_deaths" stroke="#82ca9d" />
                     </LineChart>
-                  </div>
               </div>
 
           );

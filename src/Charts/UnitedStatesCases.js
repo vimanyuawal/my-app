@@ -89,7 +89,7 @@ class UnitedStatesCases extends Component {
       return (
               <div>
                 <h4>United States Cases</h4>
-                <div className = "chart">
+                <div className = "align-self-center">
                     <LineChart width={1000} height={300} data={data}>
                     <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
                       <XAxis dataKey="dates"/>
