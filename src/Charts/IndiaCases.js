@@ -59,6 +59,8 @@ class IndiaCases extends Component {
     var data = this.state.items;
     var objectArray = [];
     var day = 1;
+    var totalDeaths = 0;
+    var totalCases = 0;
     
     for(var key in data['cases_time_series']) {
 
@@ -66,8 +68,12 @@ class IndiaCases extends Component {
               new_daily_deaths:data['cases_time_series'][key]['dailydeceased'],
               new_daily_cases:data['cases_time_series'][key]['dailyconfirmed'],
               dates:data['cases_time_series'][key]['date'],
-              day: day
+              day: day,
+              totalDeaths: (totalDeaths+Number(data['cases_time_series'][key]['dailydeceased'])),
+              totalCases: (totalCases+Number(data['cases_time_series'][key]['dailyconfirmed']))
             }
+      totalDeaths = obj.totalDeaths;
+      totalCases = obj.totalCases;
       objectArray.push(obj);
       day += 1;
     } 
@@ -94,7 +100,7 @@ class IndiaCases extends Component {
             </div>
           <div className = "row">
             <div className="col recharts-wrapper">
-              <ResponsiveContainer width="100%" height={700}>
+              <ResponsiveContainer width="100%" height={500}>
                   <LineChart data={data}
                     margin={{
                       top: 50,
@@ -115,6 +121,16 @@ class IndiaCases extends Component {
                   </ResponsiveContainer>
                 </div>
             </div>
+            <div className="row">
+                          <div className="col">
+                        <h6>Deaths Today: {data[data.length-1].new_daily_deaths}</h6>
+                  <h6>Total Deaths: {data[data.length-1].totalDeaths}</h6>
+                          </div>
+                          <div className="col">
+                          <h6>Cases Today: {data[data.length-1].new_daily_cases}</h6>
+                          <h6>Total Cases: {data[data.length-1].totalCases}</h6>
+                          </div>
+                  </div>
       </div>
 
           );

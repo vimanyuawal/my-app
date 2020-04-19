@@ -60,6 +60,8 @@ class UnitedStatesCases extends Component {
     var data = this.state.items;
     var objectArray = [];
     var day = 1;
+    var totalDeaths = 0;
+    var totalCases = 0;
     
     for(var key in data['timelineitems'][0]) {
       var date = new Date(key);
@@ -68,12 +70,15 @@ class UnitedStatesCases extends Component {
               new_daily_deaths:data['timelineitems'][0][key]['new_daily_deaths'],
               new_daily_cases:data['timelineitems'][0][key]['new_daily_cases'],
               dates:key,
-              day: day
+              day: day,
+              totalCases: (totalCases + Number(data['timelineitems'][0][key]['new_daily_cases'])),
+              totalDeaths: (totalDeaths + Number(data['timelineitems'][0][key]['new_daily_deaths']))
             }
+      totalDeaths = obj.totalDeaths;
+      totalCases = obj.totalCases;
       objectArray.push(obj);
       day += 1;
     } 
-
     objectArray.pop();
     
     return objectArray;
@@ -97,7 +102,7 @@ class UnitedStatesCases extends Component {
                   </div>
                 <div className = "row">
                   <div className="col recharts-wrapper">
-                    <ResponsiveContainer width="100%" height={700}>
+                    <ResponsiveContainer width="100%" height={500}>
                         <LineChart data={data}
                           margin={{
                             top: 50,
@@ -117,6 +122,16 @@ class UnitedStatesCases extends Component {
                         </LineChart>
                         </ResponsiveContainer>
                       </div>
+                  </div>
+                  <div className="row">
+                          <div className="col">
+                        <h6>Deaths Today: {data[data.length-1].new_daily_deaths}</h6>
+                  <h6>Total Deaths: {data[data.length-1].totalDeaths}</h6>
+                          </div>
+                          <div className="col">
+                          <h6>Cases Today: {data[data.length-1].new_daily_cases}</h6>
+                          <h6>Total Cases: {data[data.length-1].totalCases}</h6>
+                          </div>
                   </div>
               </div>
 
