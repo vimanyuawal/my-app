@@ -97,7 +97,7 @@ class UnitedStatesCases extends Component {
                   </div>
                 <div className = "row">
                   <div className="col recharts-wrapper">
-                    <ResponsiveContainer width="100%" height={400}>
+                    <ResponsiveContainer width="100%" height={700}>
                         <LineChart data={data}
                           margin={{
                             top: 50,
