@@ -92,6 +92,21 @@ class UnitedStatesCases extends Component {
       var data = this.arrangeForGraph(items);
       console.log(data);   
 
+      var deathsToday = data[data.length-1].new_daily_deaths;
+      var deathsYesterday = data[data.length-2].new_daily_deaths;
+      var totalDeathsToday = data[data.length-1].totalDeaths;
+      var totalDeathsYesterday = data[data.length-2].totalDeaths;
+
+      var casesToday = data[data.length-1].new_daily_cases;
+      var casesYesterday = data[data.length-2].new_daily_cases;
+      var totalCasesToday = data[data.length-1].totalCases;
+      var totalCasesYesterday = data[data.length-2].totalCases;
+
+      var pctChange_deathsToday = ((deathsToday - deathsYesterday)/deathsYesterday).toFixed(2);
+      var pctChange_totalDeathsToday = ((totalDeathsToday - totalDeathsYesterday)/totalDeathsYesterday).toFixed(2);
+
+      var pctChange_casesToday = ((casesToday - casesYesterday)/casesYesterday).toFixed(2);
+      var pctChange_totalCasesToday = ((totalCasesToday - totalCasesYesterday)/totalCasesYesterday).toFixed(2);
 
       return (
               <div>
@@ -125,12 +140,24 @@ class UnitedStatesCases extends Component {
                   </div>
                   <div className="row">
                           <div className="col">
-                        <h6>Deaths Today: {data[data.length-1].new_daily_deaths}</h6>
-                  <h6>Total Deaths: {data[data.length-1].totalDeaths}</h6>
+                            <h4>Deaths Today: {deathsToday} </h4>
+                            <p>{(pctChange_deathsToday >= 0) && <p style={{color:'green'}}> +{pctChange_deathsToday}%</p> }
+                            {(pctChange_deathsToday < 0) && <p style={{color:'red'}}> {pctChange_deathsToday}%</p>
+                            }</p>
+                            <h4>Total Deaths: {totalDeathsToday} </h4>
+                            <p>{(pctChange_totalDeathsToday >= 0) && <p style={{color:'green'}}> +{pctChange_totalDeathsToday}%</p> }
+                            {(pctChange_totalDeathsToday < 0) && <p style={{color:'red'}}> {pctChange_totalDeathsToday}%</p>
+                            }</p>
                           </div>
                           <div className="col">
-                          <h6>Cases Today: {data[data.length-1].new_daily_cases}</h6>
-                          <h6>Total Cases: {data[data.length-1].totalCases}</h6>
+                          <h4>Cases Today: {casesToday} </h4>
+                            <p>{(pctChange_casesToday >= 0) && <p style={{color:'green'}}> +{pctChange_casesToday}%</p> }
+                            {(pctChange_casesToday < 0) && <p style={{color:'red'}}> {pctChange_casesToday}%</p>
+                            }</p>
+                            <h4>Total Cases: {totalCasesToday} </h4>
+                            <p>{(pctChange_totalCasesToday >= 0) && <p style={{color:'green'}}> +{pctChange_totalCasesToday}%</p> }
+                            {(pctChange_totalCasesToday < 0) && <p style={{color:'red'}}> {pctChange_totalCasesToday}%</p>
+                            }</p>
                           </div>
                   </div>
               </div>
