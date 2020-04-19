@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   LineChart,
   CartesianGrid,
+  ResponsiveContainer,
   XAxis,
   YAxis,
   Tooltip,
@@ -85,18 +86,36 @@ class IndiaCases extends Component {
       console.log(data);   
 
       return (
-              <div className="align-self-center">
+        <div>
+          <div className="row">
+              <div className="col">
                 <h4>India Cases</h4>
-                    <LineChart width={1000} height={300} data={data}>
-                    <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
-                      <XAxis dataKey="dates"/>
-                      <YAxis/>
-                      <Tooltip />
-                      <Legend />
-                      <Line type="monotone" dataKey="new_daily_cases" stroke="#8884d8" />
-                      <Line type="monotone" dataKey="new_daily_deaths" stroke="#82ca9d" />
-                    </LineChart>
               </div>
+            </div>
+          <div className = "row">
+            <div className="col recharts-wrapper">
+              <ResponsiveContainer width="100%" height={400}>
+                  <LineChart data={data}
+                    margin={{
+                      top: 50,
+                      right: 200,
+                      left: 200,
+                      bottom: 50
+                    }
+                    }
+                  >
+                  <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
+                    <XAxis dataKey="dates"/>
+                    <YAxis/>
+                    <Tooltip />
+                    <Legend />
+                    <Line type="monotone" dataKey="new_daily_cases" stroke="#8884d8" />
+                    <Line type="monotone" dataKey="new_daily_deaths" stroke="#82ca9d" />
+                  </LineChart>
+                  </ResponsiveContainer>
+                </div>
+            </div>
+      </div>
 
           );
     }

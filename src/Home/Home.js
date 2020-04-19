@@ -31,11 +31,7 @@ class Home extends React.Component {
         {
             return (
                 <div className="container-fluid">
-                    <div className="row">
-                        <div className="col">
                         <USChart />
-                        </div>
-                      </div>
                     <div className="row">
                       <div className="col">
                           <div className="btn-group mr-2">
@@ -56,11 +52,7 @@ class Home extends React.Component {
 
         return (
                 <div className="container-fluid">
-                    <div className="row">
-                    <div className="col">
                         <IndiaChart />
-                        </div>
-                      </div>
                     <div className="row">
                       <div className="col">
                             <div className="btn-group mr-2">

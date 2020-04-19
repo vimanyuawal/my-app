@@ -28,3 +28,7 @@ code {
 i {
   font-family: FontAwesome;
 }
+
+.recharts-wrapper {
+  margin: 0 auto;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {
   LineChart,
+  ResponsiveContainer,
+  ResponsiveContainerProps,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -88,17 +90,33 @@ class UnitedStatesCases extends Component {
 
       return (
               <div>
-                <h4>United States Cases</h4>
-                <div className = "align-self-center">
-                    <LineChart width={1000} height={300} data={data}>
-                    <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
-                      <XAxis dataKey="dates"/>
-                      <YAxis/>
-                      <Tooltip />
-                      <Legend />
-                      <Line type="monotone" dataKey="new_daily_cases" stroke="#8884d8" />
-                      <Line type="monotone" dataKey="new_daily_deaths" stroke="#82ca9d" />
-                    </LineChart>
+                <div className="row">
+                    <div className="col">
+                      <h4>United States Cases</h4>
+                    </div>
+                  </div>
+                <div className = "row">
+                  <div className="col recharts-wrapper">
+                    <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={data}
+                          margin={{
+                            top: 50,
+                            right: 200,
+                            left: 200,
+                            bottom: 50
+                          }
+                          }
+                        >
+                        <CartesianGrid stroke="#efe" strokeDasharray="1 1"/>
+                          <XAxis dataKey="dates"/>
+                          <YAxis/>
+                          <Tooltip />
+                          <Legend />
+                          <Line type="monotone" dataKey="new_daily_cases" stroke="#8884d8" />
+                          <Line type="monotone" dataKey="new_daily_deaths" stroke="#82ca9d" />
+                        </LineChart>
+                        </ResponsiveContainer>
+                      </div>
                   </div>
               </div>
 
